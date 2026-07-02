@@ -1,0 +1,1827 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hastings Ego</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Poppins:wght@400;600;700&display=swap"
+        rel="stylesheet">
+    <meta name="description" content="Hasting's Clothing is a utilitarian apparel project built on the rejection of modern fashion norms. It strips away seasonal trends, excessive branding, and manufactured hype in favor of raw functionality and brutalist design. Functioning more as an industrial supplier than a traditional fashion house, Hasting's produces permanent, deconstructed uniforms engineered from heavy-duty materials. It is clothing reduced to its most essential, unapologetic form.">
+    <meta property="og:description" content="Hasting's Clothing is a utilitarian apparel project built on the rejection of modern fashion norms. It strips away seasonal trends, excessive branding, and manufactured hype in favor of raw functionality and brutalist design. Functioning more as an industrial supplier than a traditional fashion house, Hasting's produces permanent, deconstructed uniforms engineered from heavy-duty materials. It is clothing reduced to its most essential, unapologetic form.">
+    <meta name="twitter:description" content="Hasting's Clothing is a utilitarian apparel project built on the rejection of modern fashion norms. It strips away seasonal trends, excessive branding, and manufactured hype in favor of raw functionality and brutalist design. Functioning more as an industrial supplier than a traditional fashion house, Hasting's produces permanent, deconstructed uniforms engineered from heavy-duty materials. It is clothing reduced to its most essential, unapologetic form.">
+    <meta property="og:title" content="HASTINGS EGO | HASTINGS isn't just about being against things; it’s about stripping away the excess of the modern fashion industry.">
+    <meta name="twitter:title" content="HASTINGS EGO | HASTINGS isn't just about being against things; it’s about stripping away the excess of the modern fashion industry.">
+    <meta property="og:image" content="art/slide2.jpeg">
+    <meta property="og:url" content="https://hastingsego.com/">
+    <link rel="icon" href="https://avatars.githubusercontent.com/u/157944600?v=4">
+    <link rel="apple-touch-icon" href="https://avatars.githubusercontent.com/u/157944600?v=4">
+    <meta name="twitter:image" content="art/slide2.jpeg">
+
+    <style>
+        :root {
+            --color-background: BLACK;
+            --color-text: WHITE;
+            --color-primary: #ed1b24;
+            /* A modern, vibrant green */
+            --color-surface: #1F1B1B;
+            --color-border: #333333;
+            --font-heading: 'Anton', sans-serif;
+            --font-body: 'Poppins', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background-color: var(--color-background);
+            color: var(--color-text);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4 {
+            font-family: var(--font-heading);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+        }
+
+        a {
+            color: var(--color-primary);
+            text-decoration: none;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 0;
+            min-height: 70vh;
+        }
+
+        /*------------------------------------*\
+          #SHARED COMPONENTS
+        \*------------------------------------*/
+        .btn {
+            display: inline-block;
+            background-color: var(--color-text);
+            color: var(--color-background);
+            padding: 14px 28px;
+            border: none;
+            border-radius: 30px;
+            font-weight: 600;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        .btn:hover {
+            background-color: var(--color-primary);
+            color: var(--color-background);
+        }
+
+        .btn-dark {
+            background-color: var(--color-background);
+            color: var(--color-text);
+            border: 1px solid var(--color-text);
+        }
+
+        .btn-dark:hover {
+            background-color: var(--color-text);
+            color: var(--color-background);
+        }
+
+        /*------------------------------------*\
+          #HEADER & FOOTER
+        \*------------------------------------*/
+        .main-header {
+            padding: 20px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            background-color: var(--color-background);
+            z-index: 1000;
+        }
+
+        .logo {
+            font-family: var(--font-heading);
+            font-size: 2rem;
+            letter-spacing: 2px;
+            cursor: pointer;
+        }
+
+        .main-nav a {
+            color: var(--color-text);
+            margin: 0 20px;
+            font-weight: 600;
+            text-transform: uppercase;
+            position: relative;
+            padding-bottom: 5px;
+            cursor: pointer;
+        }
+
+        .main-nav a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--color-primary);
+            transition: width 0.3s ease;
+        }
+
+        .main-nav a:hover::after,
+        .main-nav a.active::after {
+            width: 100%;
+        }
+
+        #cart-indicator {
+            position: relative;
+        }
+
+        #cart-count {
+            position: absolute;
+            top: -8px;
+            right: -12px;
+            background-color: var(--color-primary);
+            color: var(--color-background);
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            font-size: 12px;
+            font-weight: bold;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .main-footer {
+            text-align: center;
+            padding: 40px 20px;
+            margin-top: 60px;
+        }
+
+        /*------------------------------------*\
+          #VIEW MANAGEMENT
+        \*------------------------------------*/
+        .view {
+            display: none;
+            animation: fadeIn 0.6s ease-in-out;
+        }
+
+        .view.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /*------------------------------------*\
+          #SHOP VIEW
+        \*------------------------------------*/
+        .shop-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .shop-header h1 {
+            font-size: 4rem;
+            margin-bottom: 10px;
+        }
+
+        .shop-controls {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 40px;
+            gap: 20px;
+        }
+
+        #search-bar {
+            flex-grow: 1;
+            padding: 12px 20px;
+            background-color: var(--color-surface);
+            border: 1px solid var(--color-border);
+            border-radius: 30px;
+            color: var(--color-text);
+            font-size: 1rem;
+        }
+
+        #product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .product-card {
+            background-color: var(--color-surface);
+            border-radius: 16px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .product-card img {
+            width: 100%;
+            height: 280px;
+            object-fit: cover;
+        }
+
+        .product-card-info {
+            padding: 20px;
+        }
+
+        .product-card-info h3 {
+            font-size: 1.2rem;
+            font-family: var(--font-body);
+            font-weight: 600;
+            text-transform: none;
+            letter-spacing: 0;
+        }
+
+        .product-card-info p {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--color-primary);
+            margin-top: 10px;
+        }
+
+        /*------------------------------------*\
+          #PRODUCT DETAIL VIEW
+        \*------------------------------------*/
+        #product-detail-view .container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .product-image-gallery img {
+            border-radius: 16px;
+        }
+
+        .product-details h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        .product-details .price {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--color-primary);
+            margin-bottom: 20px;
+        }
+
+        .product-details .description {
+            line-height: 1.8;
+            margin-bottom: 30px;
+        }
+
+        /*------------------------------------*\
+          #CHECKOUT VIEW
+        \*------------------------------------*/
+        #checkout-view .container {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 60px;
+        }
+
+        .checkout-forms h2,
+        .checkout-summary h2 {
+            font-size: 2rem;
+            margin-bottom: 30px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 12px;
+            background-color: var(--color-surface);
+            border: 1px solid var(--color-border);
+            border-radius: 8px;
+            color: var(--color-text);
+            font-size: 1rem;
+        }
+
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            background-color: var(--color-surface);
+            border: 1px solid var(--color-border);
+            border-radius: 8px;
+            color: var(--color-text);
+            font-size: 1rem;
+        }
+
+
+        .checkout-summary {
+            background-color: var(--color-surface);
+            padding: 30px;
+            border-radius: 16px;
+        }
+
+        #cart-items-container .cart-item {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 20px;
+            align-items: center;
+        }
+
+        #cart-items-container .cart-item img {
+            width: 80px;
+            height: 80px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+
+        .cart-item-info {
+            flex-grow: 1;
+        }
+
+        .cart-item-info h4 {
+            font-family: var(--font-body);
+            text-transform: none;
+            letter-spacing: 0;
+            font-size: 1rem;
+            font-weight: 600;
+        }
+
+        .cart-total {
+            border-top: 1px solid var(--color-border);
+            padding-top: 20px;
+            margin-top: 20px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        /*------------------------------------*\
+          #ACCOUNT VIEW
+        \*------------------------------------*/
+        #account-view .container {
+            max-width: 450px;
+            text-align: center;
+        }
+
+        #account-view h1 {
+            font-size: 3rem;
+            margin-bottom: 30px;
+        }
+
+        #account-view form {
+            text-align: left;
+        }
+
+        #account-view .btn {
+            width: 100%;
+            margin-top: 10px;
+        }
+
+
+        .menu-overlay {
+            height: 100%;
+            width: 0;
+            position: fixed;
+            z-index: 10000000;
+            top: 0;
+            left: 0;
+            background-color: rgb(0, 0, 0);
+            background-color: rgba(0, 0, 0, 0.9);
+            overflow-x: hidden;
+            transition: 0.5s;
+            max-width: 60vh;
+            opacity: 1;
+            pointer-events: all;
+        }
+
+        .menu-overlay a {
+            padding: 8px;
+            text-decoration: none;
+            font-size: 2vh;
+            color: #818181;
+            display: block;
+            transition: 0.3s;
+        }
+
+        .overlay-content {
+            position: relative;
+            top: 5%;
+            width: 100%;
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .thththththt {
+            font-size: 2rem;
+        }
+
+        .closebtn {
+            font-size: 3rem !important;
+            display: flex !important;
+            margin: 10px !important;
+            padding: 0;
+            height: auto;
+            /* position: absolute; */
+            /* top: 2rem; */
+            /* left: 3rem; */
+            flex-direction: row-reverse !important;
+        }
+
+        .sesedesedwsedwdd {
+            text-align: start;
+            margin: 0.6rem 0 0 3rem;
+        }
+
+        .sesedesedwsedwdd i {
+            font-size: 1.1rem !important;
+        }
+
+        .main-nav-btn {
+            display: none;
+        }
+
+        @media screen and (max-width: 768px) {
+
+            /* Hide Desktop Navigation */
+            .main-nav {
+                display: none;
+            }
+
+            .main-nav-btn {
+                display: block;
+            }
+
+            .container {
+                display: block !important;
+            }
+        }
+
+        .hero-nav {
+            /* position: fixed; */
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 400px;
+            min-height: 105px;
+            background-image: url(;);
+            background-size: cover;
+            background-position: center;
+            overflow: hidden;
+            border-radius: 1.5rem;
+            border-style: solid;
+            border-width: 2px;
+
+            h1 {
+                color: #efefef;
+                font-size: 10vw;
+            }
+
+            &:before {
+                content: "";
+                background: rgba(#000, 0);
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                transition: background 400ms;
+            }
+
+            &.fixme {
+                &:before {
+                    background: rgba(#000, 0.8);
+                }
+            }
+        }
+
+        .page-content {
+            width: 30em;
+            margin: 0 auto;
+            line-height: 1.625;
+        }
+
+        /* From Uiverse.io by 0800Gonza */
+        .social-card {
+            width: fit-content;
+            height: fit-content;
+            background-color: transparent;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 25px 25px;
+            gap: 20px;
+            margin: auto;
+        }
+
+        /* for all social containers*/
+        .socialContainer {
+            width: 52px;
+            height: 52px;
+            border-radius: 50%;
+            background-color: rgb(44, 44, 44);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            transition-duration: 1s;
+        }
+
+        /* instagram*/
+        .containerOne:hover {
+            background-color: #d62976;
+            transition-duration: 0.3s;
+        }
+
+        /* twitter*/
+        .containerTwo:hover {
+            background-color: #00acee;
+            transition-duration: 0.3s;
+        }
+
+        /* linkdin*/
+        .containerThree:hover {
+            background-color: #0072b1;
+            transition-duration: 0.3s;
+        }
+
+        /* Whatsapp*/
+        .containerFour:hover {
+            background-color: #128c7e;
+            transition-duration: 0.3s;
+        }
+
+        .socialContainer:active {
+            transform: scale(0.9);
+            transition-duration: 0.3s;
+        }
+
+        .socialSvg {
+            width: 17px;
+        }
+
+        .socialSvg path {
+            fill: rgb(255, 255, 255);
+        }
+
+        .socialContainer:hover .socialSvg {
+            animation: slide-in-top 0.3s both;
+        }
+
+        @keyframes slide-in-top {
+            0% {
+                transform: translateY(-50px);
+                opacity: 0;
+            }
+
+            100% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header class="main-header">
+        <div class="logo" data-view="shop"><img style="max-width:4rem;"
+                src="https://avatars.githubusercontent.com/u/157944600?v=4"></div>
+        <nav class="main-nav">
+            <a class="nav-link" data-view="shop">Shop</a>
+            <a class="nav-link" data-view="about">About Us</a>
+            <a class="nav-link" data-view="contact">Contact</a>
+            <a data-view="cart" class="nav-link" id="cart-indicator">
+                Bag
+                <span id="cart-count">0</span>
+            </a>
+            <a class="nav-link" data-view="account">Account</a>
+        </nav>
+        <div onclick="open_menu();" class="main-nav-btn">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"
+                class="lucide lucide-menu-icon lucide-menu">
+                <path d="M4 5h16" />
+                <path d="M4 12h16" />
+                <path d="M4 19h16" />
+            </svg>
+        </div>
+    </header>
+
+    <div id="myNav" class="menu-overlay" style="width: 0%;">
+        <a class="closebtn" onclick="close_menu();">×</a>
+        <div class="overlay-content">
+            <img onclick="close_menu();" data-view="shop" src="https://avatars.githubusercontent.com/u/157944600?v=4"
+                style="width:20vh; height:auto; margin:auto; ">
+            <a></a>
+
+            <a class="nav-link sesedesedwsedwdd" onclick="close_menu();" data-view="shop">
+                <span>Shop</span>
+            </a>
+
+            <a class="nav-link sesedesedwsedwdd active" onclick="close_menu();" data-view="about">
+                <span>About Us</span>
+            </a>
+
+
+            <a class="nav-link sesedesedwsedwdd" onclick="close_menu();" data-view="contact">
+                <span>Contact Us</span>
+            </a>
+
+            <a class="nav-link sesedesedwsedwdd" onclick="close_menu();" data-view="contact">
+                <span>
+                    Bag
+                </span>
+            </a>
+
+            <a class="nav-link sesedesedwsedwdd" onclick="close_menu();" data-view="account">
+                <span>Account</span>
+            </a>
+
+            <a style="margin:1rem"></a>
+            <br>
+            <a style="margin:0.4rem"></a>
+            <br>
+            <p style="font-size:9px; padding: 0rem 0px 8rem 0px">Powered by VARSITYMARKET <span
+                    style="font-size: 8px; font-weight: 800;">technologies<span></span></span></p>
+        </div>
+    </div>
+
+
+    <style>
+        body {
+            background-color: var(--bg-main);
+            color: var(--text-main);
+            font-family: var(--font-stack);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* --- Utilities --- */
+        .section-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 5rem 1.5rem;
+            width: 100%;
+        }
+
+        .center-text {
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto 3.5rem auto;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 0.35rem 0.75rem;
+            border-radius: 9999px;
+            background: linear-gradient(135deg, rgba(168, 85, 247, 0.1), rgba(253, 186, 116, 0.1));
+            border: 1px solid rgba(168, 85, 247, 0.2);
+            color: var(--accent-secondary);
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            margin-bottom: 1rem;
+            background: linear-gradient(to right, #ffffff, #9ca3af);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        p {
+            color: var(--text-muted);
+        }
+
+        /* --- Hero Section --- */
+        .about-hero {
+            position: relative;
+            padding: 8rem 1.5rem 5rem 1.5rem;
+            text-align: center;
+        }
+
+        .about-hero h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+
+        }
+
+        .about-hero p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* --- Story Section (Split Layout) --- */
+        .story-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3.5rem;
+            align-items: center;
+        }
+
+        .story-visual {
+            position: relative;
+            height: 380px;
+            border-radius: 1.5rem;
+            background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Subtle geometric decorative accent inside visual container */
+        .story-visual::before {
+            content: '';
+            position: absolute;
+            width: 150px;
+            height: 150px;
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 50%;
+            filter: blur(20px);
+        }
+
+        .story-visual span {
+            font-size: 5rem;
+            z-index: 1;
+        }
+
+        .story-content h3 {
+            font-size: 1.75rem;
+            margin-bottom: 1rem;
+            color: #fff;
+        }
+
+        .story-content p {
+            margin-bottom: 1.5rem;
+        }
+
+        /* --- Centered Stats Section --- */
+        .stats-wrapper {
+            display: flex;
+            justify-content: center;
+            width: 100%;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            width: 100%;
+            justify-content: center;
+        }
+
+        .stat-card {
+            background-color: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            border-radius: 1rem;
+            padding: 2.5rem 1.5rem;
+            text-align: center;
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(168, 85, 247, 0.3);
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 800;
+            line-height: 1;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(to right, var(--accent-primary), var(--accent-secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .stat-label {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        /* --- Team Section --- */
+        .team-wrapper {
+            display: flex;
+            justify-content: center;
+            width: 100%;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 2rem;
+            width: 100%;
+            justify-content: center;
+        }
+
+        .team-card {
+            background-color: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            border-radius: 1.25rem;
+            padding: 1.5rem;
+            text-align: center;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .team-card:hover {
+            background-color: var(--bg-surface-hover);
+            transform: translateY(-2px);
+        }
+
+        .avatar-placeholder {
+            width: 90px;
+            height: 90px;
+            border-radius: 50%;
+            background: #1f1f29;
+            margin: 0 auto 1.25rem auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            border: 1px solid var(--border-color);
+        }
+
+        .team-card h4 {
+            font-size: 1.2rem;
+            color: #fff;
+            margin-bottom: 0.25rem;
+        }
+
+        .team-card role {
+            display: block;
+            font-size: 0.85rem;
+            color: var(--accent-primary);
+            font-weight: 600;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+        }
+
+        /* --- Responsive Queries --- */
+        @media (max-width: 768px) {
+            .about-hero h1 {
+                font-size: 2.5rem;
+            }
+
+            h2 {
+                font-size: 2rem;
+            }
+
+            .story-grid {
+                gap: 2rem;
+            }
+
+            .story-visual {
+                height: 280px;
+            }
+
+            .section-container {
+                padding: 3.5rem 1.5rem;
+            }
+        }
+    </style>
+
+    <style>
+        :root {
+            --bg: #000000;
+            --text: #e1e1e1;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text);
+            font-family: "Space Grotesk", sans-serif;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        /* Noise Texture */
+        .noise {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 9999;
+            opacity: 0.05;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 81vh;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Morph Effect: Blur + Threshold */
+        .morph-container {
+            position: relative;
+            font-size: clamp(2rem, 9vw, 10rem);
+            font-weight: 700;
+            filter: url(#threshold);
+            user-select: none;
+        }
+
+        .word-rotator {
+            position: relative;
+            height: 1.2em;
+            width: 100%;
+            min-width: 14ch;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .word {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            opacity: 0;
+            color: var(--text);
+            white-space: nowrap;
+            animation: rotate-words 9s infinite ease-in-out;
+        }
+
+        .word:nth-child(1) {
+            animation-delay: 0s;
+        }
+
+        .word:nth-child(2) {
+            animation-delay: 3s;
+        }
+
+        .word:nth-child(3) {
+            animation-delay: 6s;
+        }
+
+        @keyframes rotate-words {
+            0% {
+                opacity: 0;
+                filter: blur(20px);
+                transform: translate(-50%, -50%) scale(0.8);
+            }
+
+            5% {
+                opacity: 0.5;
+                filter: blur(10px);
+            }
+
+            15%,
+            35% {
+                opacity: 1;
+                filter: blur(0px);
+                transform: translate(-50%, -50%) scale(1);
+            }
+
+            45% {
+                opacity: 0.5;
+                filter: blur(10px);
+            }
+
+            50%,
+            100% {
+                opacity: 0;
+                filter: blur(20px);
+                transform: translate(-50%, -50%) scale(1.2);
+            }
+        }
+
+        /* Subtext */
+        .subtext {
+            margin-top: 2rem;
+            font-size: 1.2rem;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            color: #888;
+            opacity: 0;
+            animation: fade-up 1s ease-out 1s forwards;
+        }
+
+        @keyframes fade-up {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fade-in {
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* Scroll Indicator */
+        .scroll-indicator {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+            opacity: 0;
+            animation: fade-in 1s ease-out 2s forwards;
+        }
+
+        .mouse {
+            width: 24px;
+            height: 40px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 20px;
+            position: relative;
+        }
+
+        .wheel {
+            width: 2px;
+            height: 6px;
+            background: #fff;
+            position: absolute;
+            top: 8px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 2px;
+            animation: scroll 1.5s infinite;
+        }
+
+        @keyframes scroll {
+            0% {
+                transform: translate(-50%, 0);
+                opacity: 1;
+            }
+
+            100% {
+                transform: translate(-50%, 15px);
+                opacity: 0;
+            }
+        }
+
+        /* Content Section */
+        .content {
+            padding: 8rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .content-text h2 {
+            font-size: 3rem;
+            margin-bottom: 2rem;
+            line-height: 1.1;
+        }
+
+        .content-text p {
+            font-size: 1.1rem;
+            color: #aaa;
+            line-height: 1.6;
+            margin-bottom: 2rem;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 2rem;
+            border-radius: 1px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            /* Subtle hover gradient */
+            background: radial-gradient(circle at 50% 50%,
+                    rgba(255, 255, 255, 0.06),
+                    transparent 60%);
+            opacity: 0;
+            transition: opacity 0.5s;
+        }
+
+        .card:hover::before {
+            opacity: 1;
+        }
+
+        .card:hover {
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .filters {
+            position: absolute;
+            width: 0;
+            height: 0;
+            pointer-events: none;
+        }
+
+        @media (max-width: 768px) {
+            .content {
+                grid-template-columns: 1fr;
+                padding: 4rem 1.5rem;
+            }
+
+            .morph-container {
+                /* font-size: 15vw; */
+            }
+        }
+
+        .playlist {
+            border-radius: 12px;
+            max-width: 32rem;
+            height: 40rem;
+        }
+    </style>
+
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;500;700&display=swap"
+        rel="stylesheet" />
+
+    <div class="noise"></div>
+
+    <!-- Threshold Filter for Morph Effect -->
+    <svg class="filters">
+        <defs>
+            <filter id="threshold">
+                <!-- Alpha thresholding -->
+                <feColorMatrix in="SourceGraphic" type="matrix" values="1 0 0 0 0
+                    0 1 0 0 0
+                    0 0 1 0 0
+                    0 0 0 25 -9" result="goo" />
+                <feComposite in="SourceGraphic" in2="goo" operator="atop" />
+            </filter>
+        </defs>
+    </svg>
+
+    <section class="hero">
+        <div class="morph-container">
+            <div class="word-rotator">
+                <div class="word">Hasting's EGO</div>
+                <div class="word">ART & CULTURE</div>
+                <div class="word">Design & TECH</div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Hero Section -->
+    <header class="about-hero">
+        <span class="badge">Who We Are</span>
+        <h1>We build the digital infrastructure <br>for tomorrow.</h1>
+        <p>A distributed collective of designers, engineers, and creators obsidian-focused on making elegant digital
+            software systems accessible.</p>
+    </header>
+
+    <!-- Split Story Section -->
+    <section class="section-container">
+        <div class="story-grid">
+            <div class="story-visual">
+                <span>⚡</span>
+            </div>
+            <div class="story-content">
+                <span class="badge">Our Purpose</span>
+                <h3>Engineering with Obsession</h3>
+                <p>Founded with the conviction that user experiences shouldn't just function smoothly—they should
+                    inspire. We strip away the unnecessary legacy bloat to manifest crisp, hyper-optimized frameworks.
+                </p>
+                <p>Whether navigating complex cloud integrations or tweaking micro-interactions, our guiding metric is
+                    uncompromising quality.</p>
+            </div>
+        </div>
+    </section>
+
+    <div class="grid-wrapper">
+        <div class="responsive-grid">
+
+            <div class="uiverse-card grid-itemz">
+                <div class="card-bg-layer">
+                    <img style="border-radius:1rem; width: 100%; height: auto; " src="art/slide3.jpeg">
+                    <div class="card-inner-bg"></div>
+                </div>
+
+                <div>
+                    <div class="spinning-circle"></div>
+                </div>
+
+                <div class="card-content-layer">
+                    <div class="card-info-box">
+                        <span class="card-title">Mzansi Made Me</span>
+                        <span class="card-subtext">Amapiano/House</span>
+                        <div class="card-year-wrapper">
+                            <span class="card-subtext"></span>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="uiverse-card grid-itemz">
+                <div class="card-bg-layer">
+                    <img style="border-radius:1rem; width: 100%; height: auto; " src="art/slide1.jpeg">
+                    <div class="card-inner-bg"></div>
+                </div>
+
+                <div>
+                    <div class="spinning-circle"></div>
+                </div>
+
+                <div class="card-content-layer">
+                    <div class="card-info-box">
+                        <span class="card-title">Loser's Remedy</span>
+                        <span class="card-subtext">Rap/RNB</span>
+                        <div class="card-year-wrapper">
+                            <span class="card-subtext"></span>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="uiverse-card grid-itemz">
+                <div class="card-bg-layer">
+                    <img style="border-radius:1rem; width: 100%; height: auto; " src="art/slide2.jpeg">
+                    <div class="card-inner-bg"></div>
+                </div>
+
+                <div>
+                    <div class="spinning-circle"></div>
+                </div>
+
+                <div class="card-content-layer">
+                    <div class="card-info-box">
+                        <span class="card-title">Big Ol Racks</span>
+                        <span class="card-subtext">Hip-hop/Trap Soul</span>
+                        <div class="card-year-wrapper">
+                            <span class="card-subtext"></span>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="uiverse-card grid-itemz">
+                <div class="card-bg-layer">
+                    <img style="border-radius:1rem; width: 100%; height: auto; " src="art/slide4.jpeg">
+                    <div class="card-inner-bg"></div>
+                </div>
+
+                <div>
+                    <div class="spinning-circle"></div>
+                </div>
+
+                <div class="card-content-layer">
+                    <div class="card-info-box">
+                        <span class="card-title">Loser's Remedy</span>
+                        <span class="card-subtext">Rap/RNB</span>
+                        <div class="card-year-wrapper">
+                            <span class="card-subtext"></span>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+
+    <style>
+        .grid-wrapper {
+            display: flex;
+            justify-content: center;
+            width: 100%;
+            padding: 1rem;
+            box-sizing: border-box;
+        }
+
+        /* The Centered Grid Container */
+        .responsive-grid {
+            display: grid;
+            /* auto-fit stretches items; if you want them strictly centered without 
+       stretching past their max, use auto-fill instead */
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            width: 100%;
+            max-width: 1200px;
+            /* Limits maximum width so items don't stretch infinitely */
+            justify-content: center;
+            /* Centers columns horizontally if there is extra space */
+        }
+
+        /* Centered Grid Items */
+        .grid-itemz {
+            background-color: #f3f4f6;
+            border: 1px solid #e5e7eb;
+            border-radius: 0.5rem;
+            padding: 2rem;
+
+            /* This centers the content inside the card both vertically and horizontally */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            text-align: center;
+            font-family: sans-serif;
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #374151;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+
+        /* --- Component Variables & Keyframes --- */
+        @keyframes spin {
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* --- Main Card Container --- */
+        .uiverse-card {
+            position: relative;
+            height: 300px;
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            border-radius: 1rem;
+            /* 16px */
+            overflow: hidden;
+            box-sizing: border-box;
+        }
+
+        .uiverse-card *,
+        .uiverse-card *::before,
+        .uiverse-card *::after {
+            box-sizing: border-box;
+        }
+
+        /* --- Background Cutout Layer --- */
+        .card-bg-layer {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            padding: 0.25rem;
+            /* 4px */
+            background-color: #ed1b24;
+            /* Tailwind purple-400 */
+        }
+
+        .card-inner-bg {
+            width: 100%;
+            height: 100%;
+            border-radius: 0.75rem;
+            /* 12px */
+            border-top-right-radius: 100px;
+            border-bottom-right-radius: 40px;
+            background-color: #222222;
+        }
+
+        /* --- Gradient Spinner Layer --- */
+        .card-gradient-layer {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-radius: 1rem;
+        }
+
+        .spinning-circle {
+            width: 8rem;
+            /* 128px */
+            height: 8rem;
+            border-radius: 50%;
+            background: linear-gradient(to top right, #ff0000, #5e0606);
+            /* purple-500 to orange-300 */
+            animation: spin 12s linear infinite;
+        }
+
+        /* --- Content Elements Layer --- */
+        .card-content-layer {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            padding: 0.5rem;
+            /* 8px */
+            display: flex;
+            justify-content: space-between;
+        }
+
+        /* Left Side Glass Box */
+        .card-info-box {
+            width: 60%;
+            padding: 0.5rem;
+            padding-top: 0.75rem;
+            padding-bottom: 0.375rem;
+            display: flex;
+            flex-col: column;
+            flex-direction: column;
+            border-radius: 0.75rem;
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            background-color: rgba(249, 250, 251, 0.1);
+            /* gray-50/10 */
+            color: #e5e7eb;
+            /* gray-200 */
+            font-weight: 500;
+            font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+        }
+
+        .card-title {
+            font-size: 2rem;
+            font-weight: 900;
+            -webkit-text-stroke: 2px;
+            text-transform: uppercase;
+        }
+
+        .card-subtext {
+            font-weight: 900;
+            -webkit-text-stroke: 2px;
+            text-transform: uppercase;
+
+            font-size: 1rem;
+            /* 12px */
+            color: #9ca3af;
+            /* gray-400 */
+        }
+
+        .card-year-wrapper {
+            width: 100%;
+            margin-top: auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Right Side Labels & Button */
+        .card-side-actions {
+            height: 100%;
+            padding-top: 0.5rem;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        .card-brand-text {
+            font-size: 10px;
+        }
+
+        .brand-top {
+            line-height: 12px;
+        }
+
+        .brand-bottom {
+            line-height: 13px;
+        }
+
+        .card-action-btn {
+            width: 2rem;
+            /* 32px */
+            height: 2rem;
+            margin-top: auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            background-color: rgba(249, 250, 251, 0.2);
+            /* gray-50/20 */
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .card-action-btn:hover {
+            background-color: rgba(249, 250, 251, 0.3);
+            /* gray-50/30 */
+        }
+
+        .btn-icon {
+            font-family: Georgia, Cambria, "Times New Roman", Times, serif;
+            color: rgba(255, 255, 255, 0.8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .arrow-icon {
+            width: 1rem;
+            /* 16px */
+            height: 1rem;
+        }
+    </style>
+
+    <section class="content">
+        <div class="content-text">
+            <h2>Mzansi Made Me</h2>
+            <p>
+                Our founder's journey is a testament to the power of resilience and vision. From humble beginnings to
+                leading a transformative movement, this playlist captures the essence of his story.
+            </p>
+
+            <div class="card">
+                <h3>Amapiano/House Mix</h3>
+                <br />
+                <p style="margin-bottom: 0">
+                    The bbeeats of South Africa, the rhythms that shaped a generation. Dive into the sounds that
+                    inspired our founder and continue to influence the world.
+                </p>
+            </div>
+
+        </div>
+        <div class="grid-item">
+            <iframe class="playlist" data-testid="embed-iframe" style="border-radius:12px"
+                src="https://open.spotify.com/embed/playlist/6977jecjCzxfgu8zB9o5Hj?utm_source=generator&si=c2abb997e9b0499b"
+                width="100%" height="352" frameBorder="0" allowfullscreen=""
+                allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                loading="lazy"></iframe>
+        </div>
+    </section>
+
+
+    <section class="content">
+        <div class="content-text">
+            <h2>Loser's Remedy<br />Early Beginings.</h2>
+            <p>
+                Embrace One of our influencial playlist dedicated to the founder. This sets the tone of your brain to a
+                more operational and creative individual.
+            </p>
+            <div class="card">
+                <h3>Jazz Rap/RNB</h3>
+                <br />
+                <p style="margin-bottom: 0">
+                    A blend of smooth jazz and soulful R&B, this playlist reflects the early influences that shaped our
+                    founder's vision. Let the melodies guide you through a journey of creativity and inspiration.
+                </p>
+            </div>
+
+        </div>
+        <div class="grid-item">
+            <iframe class="playlist" data-testid="embed-iframe" style="border-radius:12px"
+                src="https://open.spotify.com/embed/playlist/3xjU8XEzb1NNvfnK31XzWR?utm_source=generator&si=b9165be9344a4b21"
+                width="100%" height="352" frameBorder="0" allowfullscreen=""
+                allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                loading="lazy"></iframe>
+        </div>
+    </section>
+
+    <section class="content">
+        <div class="content-text">
+            <h2>FOUNDERS THOUGHTS<br />Legacies.</h2>
+            <p>
+                This is days before the launch of the company, the founder was reflecting on the journey and the impact
+                he wanted to make. This playlist captures those moments of introspection and vision.
+            </p>
+            <div class="card">
+                <h3>Hiphop/Jazz Mix</h3>
+                <br />
+                <p style="margin-bottom: 0">
+                    A curated selection of tracks that influenced the founder's mindset and approach to business. These
+                    songs embody the spirit of innovation, resilience, and creativity that define our company.
+                </p>
+            </div>
+
+        </div>
+        <div class="grid-item">
+            <iframe class="playlist" data-testid="embed-iframe" style="border-radius:12px"
+                src="https://open.spotify.com/embed/playlist/1B3MSS9JgISwIf9lEqSDlI?utm_source=generator&si=71baeda4f0d243d9"
+                width="100%" height="352" frameBorder="0" allowfullscreen=""
+                allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                loading="lazy"></iframe>
+        </div>
+    </section>
+
+
+    <section class="content">
+        <div class="content-text">
+            <h2>Big Ol Racks<br /></h2>
+            <p>
+                A playlist that captures the essence of ambition, drive, and the relentless pursuit of success. These
+                tracks resonate with the founder's journey and the ethos of our brand.
+            </p>
+            <div class="card">
+                <h3>Trap Soul/Hip-hop</h3>
+                <br />
+                <p style="margin-bottom: 0">
+                    A collection of tracks that resonate with the founder's journey and the essence of our brand. These
+                    songs are a testament to the power of music in shaping thoughts, emotions, and actions.
+                </p>
+            </div>
+
+        </div>
+        <div class="grid-item">
+            <iframe class="playlist" data-testid="embed-iframe" style="border-radius:12px"
+                src="https://open.spotify.com/embed/playlist/4OKN8sx31ENk0IxFkaKQcC?utm_source=generator&si=1b0a132956494a03"
+                width="100%" height="352" frameBorder="0" allowfullscreen=""
+                allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                loading="lazy"></iframe>
+        </div>
+    </section>
+
+
+    <div style="display:none;">
+        <div class="container">
+            <h1>Contact Us</h1>
+            <form class="js-contact-form" id="login-form">
+                <div class="form-group">
+                    <label for="login-email">Name</label>
+                    <input type="email" id="login-email" required>
+                </div>
+                <div class="form-group">
+                    <label for="login-email">Email</label>
+                    <input type="email" id="login-email" required>
+                </div>
+                <div class="form-group">
+                    <label for="login-email">Subject</label>
+                    <input type="text" id="login-email" required>
+                </div>
+                <div class="form-group">
+                    <label for="login-email">Description</label>
+                    <textarea rows="10"></textarea>
+                </div>
+                <button type="button" class="btn btn-dark">Send Message</button>
+            </form>
+        </div>
+    </div>
+
+    <footer class="main-footer">
+
+        <!-- From Uiverse.io by 0800Gonza -->
+        <div class="social-card">
+            <a class="socialContainer containerOne" href="#">
+                <svg viewBox="0 0 16 16" class="socialSvg instagramSvg">
+                    <path
+                        d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.917 3.917 0 0 0-1.417.923A3.927 3.927 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.916 3.916 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.926 3.926 0 0 0-.923-1.417A3.911 3.911 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0h.003zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599.28.28.453.546.598.92.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.47 2.47 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.478 2.478 0 0 1-.92-.598 2.48 2.48 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233 0-2.136.008-2.388.046-3.231.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92.28-.28.546-.453.92-.598.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045v.002zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92zm-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217zm0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334z">
+                    </path>
+                </svg>
+            </a>
+
+            <a class="socialContainer containerTwo" href="#">
+                <svg viewBox="0 0 16 16" class="socialSvg twitterSvg">
+                    <path
+                        d="M5.026 15c6.038 0 9.341-5.003 9.341-9.334 0-.14 0-.282-.006-.422A6.685 6.685 0 0 0 16 3.542a6.658 6.658 0 0 1-1.889.518 3.301 3.301 0 0 0 1.447-1.817 6.533 6.533 0 0 1-2.087.793A3.286 3.286 0 0 0 7.875 6.03a9.325 9.325 0 0 1-6.767-3.429 3.289 3.289 0 0 0 1.018 4.382A3.323 3.323 0 0 1 .64 6.575v.045a3.288 3.288 0 0 0 2.632 3.218 3.203 3.203 0 0 1-.865.115 3.23 3.23 0 0 1-.614-.057 3.283 3.283 0 0 0 3.067 2.277A6.588 6.588 0 0 1 .78 13.58a6.32 6.32 0 0 1-.78-.045A9.344 9.344 0 0 0 5.026 15z">
+                    </path>
+                </svg>
+            </a>
+
+            <a class="socialContainer containerThree" href="#">
+                <svg viewBox="0 0 448 512" class="socialSvg linkdinSvg">
+                    <path
+                        d="M100.28 448H7.4V148.9h92.88zM53.79 108.1C24.09 108.1 0 83.5 0 53.8a53.79 53.79 0 0 1 107.58 0c0 29.7-24.1 54.3-53.79 54.3zM447.9 448h-92.68V302.4c0-34.7-.7-79.2-48.29-79.2-48.29 0-55.69 37.7-55.69 76.7V448h-92.78V148.9h89.08v40.8h1.3c12.4-23.5 42.69-48.3 87.88-48.3 94 0 111.28 61.9 111.28 142.3V448z">
+                    </path>
+                </svg>
+            </a>
+
+            <a class="socialContainer containerFour" href="#">
+                <svg viewBox="0 0 16 16" class="socialSvg whatsappSvg">
+                    <path
+                        d="M13.601 2.326A7.854 7.854 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.933 7.933 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.898 7.898 0 0 0 13.6 2.326zM7.994 14.521a6.573 6.573 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.557 6.557 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592zm3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.729.729 0 0 0-.529.247c-.182.198-.691.677-.691 1.654 0 .977.71 1.916.81 2.049.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232z">
+                    </path>
+                </svg>
+            </a>
+        </div>
+
+        <p>Powered By varsitymarket technologies</p>
+    </footer>
+
+    <script>
+        window.StoreConfig = {
+            apiLink: "http://localhost:8016/store-access/25/", // We will link this up next
+            currency: "R",
+            storeID: "R",
+            storePubKey: "R"
+        };
+    </script>
+    <script src="https://themes.varsitymarket.tech/plugin/store.js" defer></script>
+
+    <script>
+        function open_menu() {
+            document.getElementById("myNav").style.width = "100%";
+        }
+
+        function close_menu() {
+            document.getElementById("myNav").style.width = "0%";
+        }
+
+        function reload_page(url) {
+            if (url == "#") {
+                location.reload();
+            } else {
+                location.href = url;
+            }
+        }
+
+        var heroShinker = function () {
+            var hero = $('.hero-nav'),
+                heroHeight = $('.hero-nav').outerHeight(true);
+            $(hero).parent().css('padding-top', heroHeight);
+            $(window).scroll(function () {
+                var scrollOffset = $(window).scrollTop();
+                if (scrollOffset < heroHeight) {
+                    $(hero).css('height', (heroHeight - scrollOffset));
+                }
+                if (scrollOffset > (heroHeight - 215)) {
+                    hero.addClass('fixme');
+                } else {
+                    hero.removeClass('fixme');
+                };
+            });
+        }
+        heroShinker();
+    </script>
+</body>
+
+</html>
